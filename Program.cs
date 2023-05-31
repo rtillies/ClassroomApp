@@ -10,7 +10,35 @@ var joe = new Student { FirstName = "Joe", LastName = "Centeno", Age = 22 };
 var rafi = new Student { FirstName = "Rafi", LastName = "Wick", Age = 18 };
 var seth = new Student { FirstName = "Seth", LastName = "Grinstead", Age = 20 };
 var skylar = new Student { FirstName = "Skylar", LastName = "Sandler", Age = 24 };
+var students = new List<Student> { alex, braden, eli, isiah, james, jeremy, joe, rafi, seth, skylar };
 
 var launch = new Course { Name = "Launch Program", Capacity = 4 };
 var fee = new Course { Name = "Front-End Engineering", Capacity = 7 };
 var bee = new Course { Name = "Backend Engineering", Capacity = 5 };
+
+using (var context = new ClassroomContext())
+{
+    // CREATE
+    foreach (var student in students)
+    {
+        context.Students.Add(student);
+    }
+    context.SaveChanges();
+
+    // READ
+    displayStudents(context);
+}
+
+void displayStudents(ClassroomContext context)
+{
+    foreach (var s in context.Students)
+    {
+        Console.WriteLine($"Student: {s.FirstName} {s.LastName}, Age {s.Age}");
+    }
+}
+
+void displayCourses(ClassroomContext context)
+{
+
+}
+
