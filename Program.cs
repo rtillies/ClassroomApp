@@ -31,6 +31,13 @@ using (var context = new ClassroomContext())
     //context.Courses.Add(bee);
     //context.SaveChanges();
 
+    // Add students to courses, add courses to students
+    //var addToLaunch = context.Students.Where(s => s.Age < 20);
+    //var courseLaunch = context.Courses.Single(c => c.Name.Contains("Launch"));
+    //courseLaunch.Roster.AddRange(addToLaunch);
+    //context.SaveChanges();
+
+
     // READ
     displayStudents(context);
     displayCourses(context);
@@ -41,7 +48,7 @@ void displayStudents(ClassroomContext context)
     Console.WriteLine("Student List:");
     foreach (var s in context.Students)
     {
-        Console.WriteLine($"Student: {s.FirstName} {s.LastName}, Age {s.Age}");
+        Console.WriteLine($"Student: {s.FirstName} {s.LastName}, Age {s.Age}, Course Count: {s.CourseList.Count}");
     }
     Console.WriteLine();
 }
@@ -51,7 +58,11 @@ void displayCourses(ClassroomContext context)
     Console.WriteLine("Course List:");
     foreach (var c in context.Courses)
     {
-        Console.WriteLine($"Course: {c.Name}, Max {c.Capacity}");
+        Console.WriteLine($"Course: {c.Name}, Max {c.Capacity}, Student Count: {c.Roster.Count}");
+        foreach (var s in c.Roster)
+        {
+            Console.WriteLine($"{s.FirstName} {s.LastName}");
+        }
     }
     Console.WriteLine();
 }
