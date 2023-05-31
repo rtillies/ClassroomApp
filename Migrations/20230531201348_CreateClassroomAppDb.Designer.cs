@@ -11,7 +11,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ClassroomApp.Migrations
 {
     [DbContext(typeof(ClassroomContext))]
-    [Migration("20230531195913_CreateClassroomAppDb")]
+    [Migration("20230531201348_CreateClassroomAppDb")]
     partial class CreateClassroomAppDb
     {
         /// <inheritdoc />
