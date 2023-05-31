@@ -18,27 +18,41 @@ var bee = new Course { Name = "Backend Engineering", Capacity = 5 };
 
 using (var context = new ClassroomContext())
 {
-    // CREATE
-    foreach (var student in students)
-    {
-        context.Students.Add(student);
-    }
-    context.SaveChanges();
+    // CREATE students
+    //foreach (var s in students)
+    //{
+    //    context.Students.Add(s);
+    //}
+    //context.SaveChanges();
+
+    // CREATE courses
+    //context.Courses.Add(launch);
+    //context.Courses.Add(fee);
+    //context.Courses.Add(bee);
+    //context.SaveChanges();
 
     // READ
     displayStudents(context);
+    displayCourses(context);
 }
 
 void displayStudents(ClassroomContext context)
 {
+    Console.WriteLine("Student List:");
     foreach (var s in context.Students)
     {
         Console.WriteLine($"Student: {s.FirstName} {s.LastName}, Age {s.Age}");
     }
+    Console.WriteLine();
 }
 
 void displayCourses(ClassroomContext context)
 {
-
+    Console.WriteLine("Course List:");
+    foreach (var c in context.Courses)
+    {
+        Console.WriteLine($"Course: {c.Name}, Max {c.Capacity}");
+    }
+    Console.WriteLine();
 }
 
