@@ -12,6 +12,6 @@ namespace ClassroomApp
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int Age { get; set; }
-        public List<Course> CourseList { get; set; }
+        public List<Course> CourseList { get; set; } = new List<Course>();
     }
 }
